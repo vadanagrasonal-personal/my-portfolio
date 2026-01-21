@@ -21,19 +21,25 @@ export default function ContactSection() {
   })
   const { toast } = useToast()
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault()
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+  const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`)
+  const body = encodeURIComponent(
+    `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+  )
 
-    toast({
-      title: "Message sent! 🚀",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    })
+  const mailtoLink = `mailto:vadanagrasonal@gmail.com?subject=${subject}&body=${body}`
+  // console.log(mailtoLink);
+  window.location.href = mailtoLink
 
-    setFormData({ name: "", email: "", message: "" })
-  }
+  toast({
+    title: "Opening mail app 📧",
+    description: "Please click Send in your email application.",
+  })
+
+  setFormData({ name: "", email: "", message: "" })
+}
 
   const toggleRecording = () => {
     setIsRecording(!isRecording)
@@ -44,6 +50,26 @@ export default function ContactSection() {
       })
     }
   }
+  const socialLinks = [
+    // {
+    //   name: "GitHub",
+    //   icon: "🐙",
+    //   url: "https://github.com/your-username",
+    //   color: "hover:text-gray-400",
+    // },
+    {
+      name: "LinkedIn",
+      icon: "💼",
+      url: "https://in.linkedin.com/in/sonal-vadanagra-54b38a268",
+      color: "hover:text-blue-400",
+    },
+    {
+      name: "WhatsApp",
+      icon: "💬",
+      url: "https://wa.me/919316535159", // your number
+      color: "hover:text-green-400",
+    },
+  ];
 
   return (
     <section id="contact" className="py-20 relative">
@@ -144,23 +170,23 @@ export default function ContactSection() {
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-cyan-400" />
-                  <span className="text-white/80">john.doe@example.com</span>
+                  <span className="text-white/80">vadanagrasonal@gmail.com</span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-green-400" />
-                  <span className="text-white/80">+1 (555) 123-4567</span>
+                  <span className="text-white/80">+9316535159</span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-purple-400" />
-                  <span className="text-white/80">San Francisco, CA</span>
+                  <span className="text-white/80">Rajkot</span>
                 </div>
               </CardContent>
             </Card>
 
             {/* AI Assistant */}
-            <Card className="glass-morphism border-white/20">
+            {/* <Card className="glass-morphism border-white/20">
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">🤖 AI Assistant</CardTitle>
               </CardHeader>
@@ -191,7 +217,7 @@ export default function ContactSection() {
                   </div>
                 </div>
               </CardContent>
-            </Card>
+            </Card> */}
 
             {/* Social Links */}
             <Card className="glass-morphism border-white/20">
@@ -200,11 +226,10 @@ export default function ContactSection() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-4">
-                  {[
+                  {/* {[
                     { name: "GitHub", icon: "🐙", color: "hover:text-gray-400" },
                     { name: "LinkedIn", icon: "💼", color: "hover:text-blue-400" },
-                    { name: "Twitter", icon: "🐦", color: "hover:text-cyan-400" },
-                    { name: "Discord", icon: "🎮", color: "hover:text-purple-400" },
+                    { name: "Whatsapp", icon: "🐦", color: "hover:text-cyan-400" },
                   ].map((social) => (
                     <motion.a
                       key={social.name}
@@ -216,7 +241,26 @@ export default function ContactSection() {
                       <span className="text-lg">{social.icon}</span>
                       <span>{social.name}</span>
                     </motion.a>
-                  ))}
+                  ))} */}
+  
+                  {/* Render */}
+                  <div className="grid gap-3">
+                    {socialLinks.map((social) => (
+                      <motion.a
+                        key={social.name}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`flex items-center gap-2 p-3 rounded-lg glass-morphism border border-white/10 text-white/80 transition-colors ${social.color}`}
+                      >
+                        <span className="text-lg">{social.icon}</span>
+                        <span>{social.name}</span>
+                      </motion.a>
+                    ))}
+                  </div>
+
                 </div>
               </CardContent>
             </Card>
@@ -231,11 +275,11 @@ export default function ContactSection() {
           className="mt-20 pt-8 border-t border-white/10 text-center"
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-white/60">© 2025 John Doe. Crafted with ❤️ and cutting-edge tech.</div>
+            <div className="text-white/60">© 2025 Vadanagra Sonal. Crafted with ❤️ and cutting-edge tech.</div>
 
             <div className="flex items-center gap-4">
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full animate-pulse" />
-              <span className="text-white/40 text-sm">Powered by Next.js & Three.js</span>
+              {/* <span className="text-white/40 text-sm">Powered by Next.js & Three.js</span> */}
             </div>
           </div>
         </motion.footer>

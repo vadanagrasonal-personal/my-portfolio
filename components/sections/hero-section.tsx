@@ -11,6 +11,7 @@ import { isWebGLSupported } from "@/lib/webgl-utils"
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [webglSupported, setWebglSupported] = useState(true)
+  const resume = "/resume.pdf";
 
   useEffect(() => {
     setWebglSupported(isWebGLSupported())
@@ -64,7 +65,7 @@ export default function HeroSection() {
             transition={{ delay: 0.8, duration: 1 }}
             className="text-6xl md:text-8xl font-bold mb-6 liquid-gradient font-sora"
           >
-            John Doe
+            Vadanagra Sonal
           </motion.h1>
 
           {/* Subheading */}
@@ -74,7 +75,7 @@ export default function HeroSection() {
             transition={{ delay: 1, duration: 0.8 }}
             className="text-xl md:text-2xl text-white/80 mb-8 font-light"
           >
-            Inventing tomorrow's web, one line of code at a time.
+            Building beautiful interfaces powered by rock-solid logic.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -89,14 +90,18 @@ export default function HeroSection() {
               className="glass-morphism hover:animate-glow text-white border-cyan-400 hover:border-cyan-300 px-8 py-4 text-lg bg-transparent"
               variant="outline"
             >
-              <Rocket className="mr-2 h-5 w-5" />🚀 Explore My Universe
+               <a href="#projects">🚀 Explore My Universe</a>
             </Button>
             <Button
               size="lg"
               className="glass-morphism hover:animate-glow text-white border-purple-400 hover:border-purple-300 px-8 py-4 text-lg bg-transparent"
               variant="outline"
             >
-              <Download className="mr-2 h-5 w-5" />📄 Download Resume
+
+            <a href={resume} download className="flex items-center px-3 py-2 ">
+              <Download className="mr-2 h-5 w-5" />
+              📄 Download Resume
+            </a>
             </Button>
           </motion.div>
         </motion.div>

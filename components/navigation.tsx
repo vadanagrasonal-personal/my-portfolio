@@ -24,7 +24,7 @@ export default function Navigation() {
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
-    { name: "Blog", href: "#blog" },
+    // { name: "Blog", href: "#blog" },
     { name: "Contact", href: "#contact" },
   ]
 
@@ -39,7 +39,7 @@ export default function Navigation() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <motion.div whileHover={{ scale: 1.05 }} className="text-2xl font-bold liquid-gradient font-sora">
-            John Doe
+            Vadanagra Sonal
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -54,14 +54,19 @@ export default function Navigation() {
                 {item.name}
               </motion.a>
             ))}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="text-white hover:text-cyan-400"
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
+          {/* <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="text-white hover:text-cyan-400"
+          >
+            {theme === "dark" ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+          </Button> */}
+
           </div>
 
           {/* Mobile Navigation */}

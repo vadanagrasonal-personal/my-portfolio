@@ -1,94 +1,120 @@
 "use client"
 
-import { useRef, useState, useEffect } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
-import { Text, OrbitControls } from "@react-three/drei"
+import { OrbitControls, Text } from "@react-three/drei"
+import { useRef, useState, useEffect } from "react"
+import * as THREE from "three"
 import { motion, AnimatePresence } from "framer-motion"
-import type * as THREE from "three"
-import { Card, CardContent } from "@/components/ui/card"
+
+/* ----------------------------- SKILLS DATA ----------------------------- */
 
 const skillsData = [
   {
     name: "React",
     category: "Frontend",
-    level: 95,
-    color: "#61DAFB",
-    position: [3, 0, 0],
-    description: "Advanced React development with hooks, context, and performance optimization",
-  },
-  {
-    name: "Node.js",
-    category: "Backend",
-    level: 90,
-    color: "#339933",
-    position: [2.1, 2.1, 0],
-    description: "Server-side JavaScript with Express, APIs, and microservices architecture",
-  },
-  {
-    name: "TypeScript",
-    category: "Frontend",
-    level: 88,
-    color: "#3178C6",
-    position: [0, 3, 0],
-    description: "Type-safe JavaScript development with advanced TypeScript patterns",
-  },
-  {
-    name: "Python",
-    category: "AI/ML",
-    level: 85,
-    color: "#3776AB",
-    position: [-2.1, 2.1, 0],
-    description: "Machine learning, data analysis, and backend development with Python",
-  },
-  {
-    name: "AWS",
-    category: "Cloud",
-    level: 82,
-    color: "#FF9900",
-    position: [-3, 0, 0],
-    description: "Cloud infrastructure, serverless computing, and DevOps on AWS",
-  },
-  {
-    name: "Docker",
-    category: "DevOps",
     level: 80,
-    color: "#2496ED",
-    position: [-2.1, -2.1, 0],
-    description: "Containerization, orchestration, and deployment automation",
+    color: "#61DAFB",
+    position: [3.6, 0, 0],
+    description:
+      "Expert in modern React (18+) with Hooks, Context, Server Components, Suspense, code-splitting, and performance optimization. Building scalable component architectures with clean state management and seamless API integration.",
   },
   {
-    name: "Three.js",
-    category: "Frontend",
-    level: 75,
-    color: "#000000",
-    position: [0, -3, 0],
-    description: "3D graphics, WebGL, and immersive web experiences",
-  },
-  {
-    name: "GraphQL",
+    name: "Laravel",
     category: "Backend",
-    level: 78,
-    color: "#E10098",
-    position: [2.1, -2.1, 0],
-    description: "API design, schema definition, and efficient data fetching",
+    level: 100,
+    color: "#FF2D20",
+    position: [-3.6, 0, 0],
+    description:
+      "Advanced Laravel development with RESTful APIs, authentication (Sanctum), role-based access control, queues, caching, validation, and scalable architecture. Strong experience with performance optimization and secure backend systems.",
+  },
+  {
+    name: "JavaScript",
+    category: "Frontend",
+    level: 90,
+    color: "#F7DF1E",
+    position: [0, 2.8, 0],
+    description:
+      "Modern JavaScript (ES6+) expertise with async programming, modular architecture, API integration, and building high-performance interactive web applications.",
+  },
+  {
+    name: "jQuery",
+    category: "Frontend",
+    level: 85,
+    color: "#0769AD",
+    position: [0, -2.8, 0],
+    description:
+      "Efficient DOM manipulation, animations, AJAX handling, form validation, and maintaining legacy systems with optimized performance.",
+  },
+  {
+    name: "AJAX",
+    category: "Frontend",
+    level: 90,
+    color: "#00BFFF",
+    position: [2.5, 2.5, 0],
+    description:
+      "Asynchronous data loading, live filtering, pagination, real-time updates, and smooth UX without page reloads.",
+  },
+  {
+    name: "WordPress",
+    category: "CMS",
+    level: 92,
+    color: "#21759B",
+    position: [-2.5, 2.5, 0],
+    description:
+      "Custom theme development, plugin customization, security hardening, speed optimization, and scalable CMS solutions.",
+  },
+  {
+    name: "ACF (WordPress)",
+    category: "CMS",
+    level: 95,
+    color: "#00A0D2",
+    position: [-2.5, -2.5, 0],
+    description:
+      "Dynamic content modeling using Advanced Custom Fields, flexible layouts, reusable components, REST API integrations.",
+  },
+  {
+    name: "MySQL",
+    category: "Database",
+    level: 98,
+    color: "#4479A1",
+    position: [2.5, -2.5, 0],
+    description:
+      "Relational database design, indexing, query optimization, migrations, performance tuning, and secure data management.",
+  },
+  {
+    name: "Azure Blob",
+    category: "Cloud",
+    level: 80,
+    color: "#0078D4",
+    position: [-1.0, -0.170, -1.2],
+    description:
+      "Secure cloud file storage, scalable uploads, CDN delivery, backup management, and optimized retrieval workflows.",
+  },
+  {
+    name: "Firebase",
+    category: "Cloud",
+    level: 90,
+    color: "#FFCA28",
+    position: [+2.0, 0, -2.0],
+    description:
+      "OTP authentication, push notifications, analytics, real-time services, and cloud-based integrations.",
   },
 ]
+
+/* ----------------------------- SKILL ORB ----------------------------- */
 
 function SkillOrb({ skill, onClick, isHovered }: any) {
   const meshRef = useRef<THREE.Mesh>(null)
 
   useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.2
-      if (isHovered) {
-        meshRef.current.scale.setScalar(1.1 + Math.sin(state.clock.elapsedTime * 2) * 0.05)
-      } else {
-        meshRef.current.scale.setScalar(1)
-      }
-    }
+    if (!meshRef.current) return
+    meshRef.current.rotation.y += 0.01
+
+    const scale = isHovered ? 1.2 : 1
+    meshRef.current.scale.lerp(new THREE.Vector3(scale, scale, scale), 0.1)
   })
 
-  const size = (skill.level / 100) * 0.6 + 0.2
+  const size = (skill.level / 100) * 0.6 + 0.3
 
   return (
     <group position={skill.position}>
@@ -99,100 +125,74 @@ function SkillOrb({ skill, onClick, isHovered }: any) {
           e.stopPropagation()
           document.body.style.cursor = "pointer"
         }}
-        onPointerOut={() => {
-          document.body.style.cursor = "auto"
-        }}
+        onPointerOut={() => (document.body.style.cursor = "auto")}
       >
-        <sphereGeometry args={[size, 16, 16]} />
+        <sphereGeometry args={[size, 32, 32]} />
         <meshStandardMaterial
           color={skill.color}
           emissive={skill.color}
-          emissiveIntensity={isHovered ? 0.2 : 0.05}
+          emissiveIntensity={isHovered ? 0.35 : 0.12}
           transparent
-          opacity={0.7}
+          opacity={0.9}
         />
       </mesh>
 
-      <Text position={[0, -size - 0.4, 0]} fontSize={0.2} color="white" anchorX="center" anchorY="middle">
+      <Text position={[0, -size - 0.4, 0]} fontSize={0.25} color="white" anchorX="center">
         {skill.name}
-      </Text>
-
-      <Text position={[0, -size - 0.6, 0]} fontSize={0.12} color="#888" anchorX="center" anchorY="middle">
-        {skill.level}%
       </Text>
     </group>
   )
 }
 
-// Fallback 2D skills grid
+/* ----------------------------- FALLBACK GRID ----------------------------- */
+
 function FallbackSkillsGrid({ skills, onSkillClick }: any) {
   return (
-    <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6">
       {skills.map((skill: any) => (
         <motion.div
           key={skill.name}
           whileHover={{ scale: 1.05 }}
           onClick={() => onSkillClick(skill)}
-          className="cursor-pointer"
+          className="cursor-pointer rounded-lg border border-white/20 bg-white/5 p-4 text-center"
         >
-          <Card className="glass-morphism border-white/20 hover:border-cyan-400/50 transition-all duration-300">
-            <CardContent className="p-4 text-center">
-              <div
-                className="w-16 h-16 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl font-bold"
-                style={{ backgroundColor: skill.color + "20", color: skill.color }}
-              >
-                {skill.level}%
-              </div>
-              <h3 className="text-white font-semibold mb-1">{skill.name}</h3>
-              <p className="text-white/60 text-sm">{skill.category}</p>
-            </CardContent>
-          </Card>
+          <div
+            className="w-16 h-16 rounded-full mx-auto mb-3 flex items-center justify-center text-xl font-bold"
+            style={{ backgroundColor: skill.color + "30", color: skill.color }}
+          >
+            {skill.level}%
+          </div>
+          <h3 className="text-white font-semibold">{skill.name}</h3>
+          <p className="text-white/60 text-sm">{skill.category}</p>
         </motion.div>
       ))}
     </div>
   )
 }
 
+/* ----------------------------- MAIN COMPONENT ----------------------------- */
+
 export default function SkillWheel() {
-  const [hoveredSkill, setHoveredSkill] = useState<any>(null)
   const [selectedSkill, setSelectedSkill] = useState<any>(null)
+  const [hoveredSkill, setHoveredSkill] = useState<any>(null)
   const [webglSupported, setWebglSupported] = useState(true)
-  const [canvasError, setCanvasError] = useState(false)
 
   useEffect(() => {
-    // Check WebGL support
     try {
       const canvas = document.createElement("canvas")
-      const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl")
-      if (!gl) {
-        setWebglSupported(false)
-      }
-    } catch (e) {
+      const gl = canvas.getContext("webgl")
+      if (!gl) setWebglSupported(false)
+    } catch {
       setWebglSupported(false)
     }
   }, [])
 
-  const handleCanvasError = () => {
-    setCanvasError(true)
-    setWebglSupported(false)
-  }
-
   return (
-    <div className="relative w-full h-full">
-      {webglSupported && !canvasError ? (
-        <Canvas
-          camera={{ position: [0, 0, 6], fov: 60 }}
-          onError={handleCanvasError}
-          gl={{
-            antialias: false,
-            alpha: true,
-            powerPreference: "high-performance",
-          }}
-          dpr={[1, 1.5]}
-        >
-          <ambientLight intensity={0.4} />
-          <pointLight position={[5, 5, 5]} intensity={0.8} />
-          <pointLight position={[-5, -5, -5]} intensity={0.4} color="#ff00ff" />
+    <div className="relative w-full h-[600px] bg-black rounded-xl overflow-hidden">
+      {webglSupported ? (
+        <Canvas camera={{ position: [0, 0, 8], fov: 60 }}>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[5, 5, 5]} intensity={1} />
 
           {skillsData.map((skill) => (
             <SkillOrb
@@ -200,46 +200,37 @@ export default function SkillWheel() {
               skill={skill}
               isHovered={hoveredSkill?.name === skill.name}
               onClick={() => setSelectedSkill(skill)}
+              onPointerOver={() => setHoveredSkill(skill)}
             />
           ))}
 
-          <OrbitControls enableZoom={true} enablePan={false} enableRotate={true} maxDistance={8} minDistance={4} />
+          <OrbitControls enableZoom enablePan={false} />
         </Canvas>
       ) : (
         <FallbackSkillsGrid skills={skillsData} onSkillClick={setSelectedSkill} />
       )}
 
-      {/* Skill Details */}
+      {/* ------------------ SKILL DETAIL PANEL ------------------ */}
       <AnimatePresence>
         {selectedSkill && (
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            className="absolute bottom-4 left-4 right-4 glass-morphism rounded-lg p-6"
+            exit={{ opacity: 0, y: 60 }}
+            className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-md border border-white/20 rounded-lg p-6"
           >
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-2xl font-bold text-white">{selectedSkill.name}</h3>
-              <button onClick={() => setSelectedSkill(null)} className="text-white/60 hover:text-white">
+            <div className="flex justify-between items-center mb-3">
+              <h3 className="text-xl text-white font-bold">{selectedSkill.name}</h3>
+              <button
+                onClick={() => setSelectedSkill(null)}
+                className="text-white/60 hover:text-white"
+              >
                 ✕
               </button>
             </div>
 
-            <div className="flex items-center gap-4 mb-4">
-              <span className="px-3 py-1 bg-white/10 rounded-full text-sm text-white">{selectedSkill.category}</span>
-              <div className="flex items-center gap-2">
-                <div className="w-32 h-2 bg-white/20 rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${selectedSkill.level}%` }}
-                    className="h-full bg-gradient-to-r from-cyan-400 to-purple-400"
-                  />
-                </div>
-                <span className="text-white/80">{selectedSkill.level}%</span>
-              </div>
-            </div>
-
-            <p className="text-white/70">{selectedSkill.description}</p>
+            <p className="text-white/70 text-sm mb-2">{selectedSkill.category}</p>
+            <p className="text-white/80 text-sm">{selectedSkill.description}</p>
           </motion.div>
         )}
       </AnimatePresence>

@@ -7,8 +7,8 @@ const filters = [
   { id: "all", label: "All Projects", icon: "🌌" },
   { id: "frontend", label: "Frontend", icon: "🎨" },
   { id: "backend", label: "Backend", icon: "⚙️" },
-  { id: "ai", label: "AI/ML", icon: "🤖" },
-  { id: "opensource", label: "Open Source", icon: "🔓" },
+  // { id: "ai", label: "AI/ML", icon: "🤖" },
+  // { id: "opensource", label: "Open Source", icon: "🔓" },
 ]
 
 interface ProjectFilterProps {

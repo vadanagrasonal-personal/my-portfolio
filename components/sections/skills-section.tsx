@@ -15,7 +15,7 @@ export default function SkillsSection() {
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">Skills Matrix</h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Interactive 3D visualization of my technical expertise. Hover over each skill to see it in action.
+            Hover over each skill to reveal real-world implementations and project impact.          
           </p>
         </motion.div>
 

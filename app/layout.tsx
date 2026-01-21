@@ -2,20 +2,20 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Sora } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "next-themes"
 import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora" })
 
 export const metadata: Metadata = {
-  title: "John Doe - Creative Technologist",
-  description: "Inventing tomorrow's web, one line of code at a time.",
+  title: "Vadanagra Sonal - Creative Technologist",
+  description: "Building beautiful interfaces powered by rock-solid logic.",
   keywords: ["developer", "portfolio", "full-stack", "creative technologist"],
-  authors: [{ name: "John Doe" }],
+  authors: [{ name: "Vadanagra Sonal" }],
   openGraph: {
-    title: "John Doe - Creative Technologist",
-    description: "Inventing tomorrow's web, one line of code at a time.",
+    title: "Vadanagra Sonal - Creative Technologist",
+    description: "Building beautiful interfaces powered by rock-solid logic.",
     type: "website",
   },
     generator: 'senotron'

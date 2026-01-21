@@ -12,52 +12,207 @@ import { Card, CardContent } from "@/components/ui/card"
 const projectsData = [
   {
     id: 1,
-    name: "AI Chat Platform",
-    category: "ai",
-    position: [2, 1, 0],
-    color: "#00ffff",
-    description: "Real-time AI-powered chat application with natural language processing.",
-    technologies: ["React", "Node.js", "OpenAI", "WebSocket"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    image: "/placeholder.svg?height=200&width=300",
+    name: "City Management System",
+    category: "fullstack",
+    position: [-0.4, -0.9, 1],
+    color: "#ff9900",
+    description:
+      "Comprehensive City Management System to manage zone- and city-based accounts, products, consumption tracking, user contacts, and secure authentication with role-based access control and real-time reporting.",
+    technologies: [
+      "Laravel",
+      "MySQL",
+      "Firebase OTP",
+      "REST API",
+      "PDF Generation"
+    ],
+    // github: "https://github.com/your-username/city-management-system",
+    // demo: "https://your-demo-link.com",
+    // image: "/projects/city-management-system.png",
   },
   {
     id: 2,
-    name: "E-commerce Platform",
-    category: "frontend",
-    position: [-2, -1, 1],
+    name: "E-Commerce System",
+    category: "fullstack",
+    position: [1.6, -1.5, 1],
     color: "#ff00ff",
-    description: "Modern e-commerce platform with advanced filtering and payment integration.",
-    technologies: ["Next.js", "Stripe", "Prisma", "PostgreSQL"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    image: "/placeholder.svg?height=200&width=300",
+    description:
+      "Comprehensive E-Commerce platform built with Laravel supporting multi-authentication, product management, advanced search, multi-device login, role-based access, reporting, and automation features.",
+    technologies: [
+      "Laravel",
+      "MySQL",
+      "REST APIs",
+      "Excel Import/Export",
+      "PDF Generation",
+      "QR Code Integration",
+      "Email Scheduling",
+      "Multi-Authentication",
+      "Role-Based Permissions"
+    ],
+    // github: "https://github.com/your-username/ecommerce-system",
+    // demo: "https://your-demo-link.com",
+    // image: "/projects/ecommerce-system.png",
   },
   {
     id: 3,
-    name: "API Gateway",
-    category: "backend",
-    position: [0, 2, -2],
-    color: "#ffff00",
-    description: "Scalable API gateway with rate limiting, authentication, and monitoring.",
-    technologies: ["Node.js", "Redis", "Docker", "AWS"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    image: "/placeholder.svg?height=200&width=300",
+    name: "Stavya Spine Hospital ERP",
+    category: "fullstack",
+    position: [2, 2, 1],
+    color: "#bbd11a",
+    description:
+      "Full-scale Hospital Management ERP built for a spine & orthopaedic specialty hospital. Digitizes end-to-end patient lifecycle, clinical assessments, radiology workflows, billing, inventory, reporting, and role-based access with a highly normalized MySQL schema (200+ tables). Supports advanced spine scoring systems, automated diagnostics workflows, and enterprise-grade security.",
+    technologies: [
+      "Laravel",
+      "PHP","Firebase","TeleCRM",
+      "MySQL",
+      "REST APIs",
+      "React",
+      "jQuery",
+      "Bootstrap"
+    ],
+    // github: "https://github.com/your-username/stavya-erp",
+    // demo: "https://your-demo-link.com",
+    // image: "/projects/stavya-erp.png"
   },
   {
     id: 4,
-    name: "Open Source UI Library",
-    category: "opensource",
-    position: [-1, 0, 2],
-    color: "#00ff00",
-    description: "Comprehensive React component library with TypeScript support.",
-    technologies: ["React", "TypeScript", "Storybook", "Rollup"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    image: "/placeholder.svg?height=200&width=300",
+    name: "API Based Platform",
+    category: "backend",
+    position: [3, 0.1, 1],
+    color: "#7c3aed",
+    description:
+      "Scalable Laravel-based platform with secure APIs for authentication, search, category content management, multimedia handling, real-time notifications, and admin panel automation.",
+    technologies: [
+      "Laravel",
+      "MySQL",
+      "REST APIs",
+      "Firebase Notifications",
+      "Firebase OTP",
+      "Excel Import/Export",
+      "Third-Party Validation"
+    ],
+    // github: "https://github.com/your-username/api-platform",
+    // demo: "https://your-demo-link.com",
+    // image: "/projects/api-platform.png",
   },
+  {
+    id: 5,
+    name: "METIS Hospital Management System",
+    category: "fullstack",
+    position: [-0.6, 1,1],
+    color: "#00b894",
+    description:
+      "Scalable Hospital Management System managing patient lifecycle, OPD/IPD workflows, doctor scheduling, billing, revenue sharing, insurance payments, bulk imports, and role-based access with high-volume transactional data.",
+    technologies: [
+      "Laravel",
+      "MySQL",
+      "REST APIs",
+      "Role-Based Permissions",
+      "Billing Systems",
+      "Bulk Data Import",
+      "Audit Logging",
+      "Relational Database Design"
+    ],
+    // github: "https://github.com/your-username/metis-hms",
+    // demo: "https://your-demo-link.com",
+    // image: "/projects/metis-hms.png",
+  },
+  {
+    id: 6,
+    name: "2Brain – Business Operations System",
+    category: "fullstack",
+    position: [-1, 2.6, 1],
+    color: "#df123b",
+    description:
+      "Centralized business operations platform managing customers, materials, quotations, sales orders, purchase orders, production workflows, contractors, document management, and role-based access with transactional integrity.",
+    technologies: [
+      "Laravel",
+      "MySQL",
+      "REST APIs",
+      "RBAC",
+      "GST Calculations",
+      "Order Management",
+      "Document Management",
+      "Background Jobs",
+      "Caching",
+      "Audit Logging"
+    ],
+    // github: "https://github.com/your-username/2brain-system",
+    // demo: "https://your-demo-link.com",
+    // image: "/projects/2brain.png",
+  },
+  {
+    id: 7,
+    name: "Biomatrix – WordPress Content & Form Platform",
+    category: "fullstack",
+    position: [-5, 2, 1],
+    color: "#f6d015",
+    description:
+      "WordPress-based content and form management platform handling structured content entities, taxonomies, user accounts, comments, system configuration, background task scheduling, transactional form submissions, and email diagnostics using a normalized MySQL schema.",
+    technologies: [
+      "WordPress",
+      "PHP",
+      "MySQL",
+      "WPForms",
+      "Action Scheduler",
+      "WP Mail SMTP",
+      "REST APIs",
+      "Plugin Architecture",
+      "Relational Database Design"
+    ],
+    // github: "https://github.com/your-username/biomatrix-platform",
+    // demo: "https://your-demo-link.com",
+    // image: "/projects/biomatrix.png",
+  },
+  {
+    id: 8,
+    name: "Soham Hospital Management & Billing System",
+    category: "fullstack",
+    position: [-3.5, -0.4, 1],
+    color: "#00cec9",
+    description:
+      "WordPress-based hospital management platform handling patient inquiries, online forms, appointment workflows, secure payments, automated background jobs, email tracking, user management, and audit logging using a normalized relational database.",
+    technologies: [
+      "WordPress",
+      "PHP",
+      "MySQL",
+      "WPForms",
+      "Payment Gateway Integration",
+      "Action Scheduler",
+      "WP Mail SMTP",
+      "Relational Database Design",
+      "Audit Logging",
+      "Background Jobs"
+    ],
+    // github: "https://github.com/your-username/soham-hms",
+    // demo: "https://your-demo-link.com",
+    // image: "/projects/soham-hms.png",
+  },
+  {
+    id: 9,
+    name: "Culture Crust – Restaurant & Online Ordering Management System",
+    category: "fullstack",
+    position: [-3.0, -2, 1],
+    color: "#f566b7",
+    description:
+      "Full-scale Restaurant & Online Ordering Management System built on WordPress with centralized order handling, secure payments, dynamic forms, automated background tasks, role-based permissions, and scalable relational database architecture.",
+    technologies: [
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "Online Payment Gateway",
+      "Action Scheduler",
+      "SMTP Integration",
+      "Dynamic Forms",
+      "Role-Based Authentication",
+      "Relational Database Design",
+      "Audit Logging"
+    ],
+    // github: "https://github.com/your-username/culture-crust",
+    // demo: "https://your-demo-link.com",
+    // image: "/projects/culture-crust.png",
+  }
+
+
 ]
 
 function ProjectPlanet({ project, onClick, isSelected }: any) {
@@ -214,14 +369,14 @@ export default function ProjectGalaxy({ selectedFilter }: ProjectGalaxyProps) {
               onClick={(e) => e.stopPropagation()}
               className="glass-morphism rounded-lg p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
             >
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
+              <div className="grid">
+                {/* <div>
                   <img
                     src={selectedProject.image || "/placeholder.svg?height=200&width=300"}
                     alt={selectedProject.name}
                     className="w-full h-48 object-cover rounded-lg mb-4"
                   />
-                </div>
+                </div> */}
 
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-4">{selectedProject.name}</h3>
@@ -236,7 +391,7 @@ export default function ProjectGalaxy({ selectedFilter }: ProjectGalaxyProps) {
                     ))}
                   </div>
 
-                  <div className="flex gap-4">
+                  {/* <div className="flex gap-4">
                     <Button
                       variant="outline"
                       className="glass-morphism border-cyan-400 text-cyan-400 hover:bg-cyan-400/20 bg-transparent"
@@ -258,7 +413,7 @@ export default function ProjectGalaxy({ selectedFilter }: ProjectGalaxyProps) {
                         Live Demo
                       </a>
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </motion.div>

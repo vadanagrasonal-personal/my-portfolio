@@ -16,8 +16,9 @@ export default function AboutSection() {
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">About Me</h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            I'm a creative technologist who bridges the gap between design and development, crafting digital experiences
-            that push the boundaries of what's possible on the web.
+            Passionate Full Stack Developer specializing in <b>Laravel, React,</b> and <b>WordPress.</b>
+            <br/>Experienced in building scalable web applications with secure online payment gateway integrations.
+            Focused on clean code, performance, and creating seamless user experiences. 🚀<br/>
           </p>
         </motion.div>
 
@@ -32,7 +33,7 @@ export default function AboutSection() {
         </motion.div>
 
         {/* Dynamic Widgets */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* <div className="grid md:grid-cols-2 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -48,7 +49,7 @@ export default function AboutSection() {
           >
             <CurrentlyLearningWidget />
           </motion.div>
-        </div>
+        </div> */}
       </div>
     </section>
   )

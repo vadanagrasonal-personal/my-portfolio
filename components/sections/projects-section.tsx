@@ -17,10 +17,9 @@ export default function ProjectsSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">Project Galaxy</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">Tech  Galaxy</h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
-            Explore my projects as planets in a 3D universe. Click on any planet to dive deeper into the project
-            details.
+            Explore my Laravel & React projects as interactive worlds of scalable innovation.
           </p>
 
           <ProjectFilter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
