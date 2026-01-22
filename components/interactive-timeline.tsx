@@ -322,10 +322,12 @@ export default function InteractiveTimeline() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2, duration: 0.6 }}
-            className={`flex items-center ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
+            className={`flex flex-col md:flex-row items-center 
+              ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
           >
             {/* Content Card */}
-            <div className={`w-5/12 ${index % 2 === 0 ? "pr-8" : "pl-8"}`}>
+            <div className={`w-full md:w-5/12 px-2 md:px-0 
+              ${index % 2 === 0 ? "md:pr-8" : "md:pl-8"}`}>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 onClick={() => setSelectedItem(selectedItem === item.id ? null : item.id)}
@@ -356,7 +358,7 @@ export default function InteractiveTimeline() {
             </div>
 
             {/* Timeline Node */}
-            <div className="relative z-10">
+            <div className="relative z-10 my-4 md:my-0">
               <motion.div
                 whileHover={{ scale: 1.2 }}
                 className="w-6 h-6 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full border-4 border-black shadow-lg"
@@ -364,7 +366,7 @@ export default function InteractiveTimeline() {
             </div>
 
             {/* Spacer */}
-            <div className="w-5/12" />
+          <div className="hidden md:block md:w-5/12" />
           </motion.div>
         ))}
       </div>
