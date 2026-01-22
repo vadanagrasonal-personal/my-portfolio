@@ -1,14 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  output: "export",           // 👈 required for GitHub Pages
   images: {
-    unoptimized: true,
+    unoptimized: true,        // 👈 GitHub Pages can't optimize images
   },
-}
+  basePath: "/my-portfolio.github.io",   // 👈 repo name
+  assetPrefix: "/my-portfolio.github.io/",
+};
 
-export default nextConfig
+export default nextConfig;
