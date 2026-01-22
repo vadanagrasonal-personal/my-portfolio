@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",           // 👈 required for GitHub Pages
+  output: "export",    // 👈 REQUIRED for GitHub Pages
+
   images: {
-    unoptimized: true,        // 👈 GitHub Pages can't optimize images
+    unoptimized: true,
   },
-  basePath: "/my-portfolio.github.io",   // 👈 repo name
+
+  basePath: "/my-portfolio.github.io",
   assetPrefix: "/my-portfolio.github.io/",
 };
 
